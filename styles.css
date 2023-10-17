@@ -1,10 +1,48 @@
 .container {
-  width: 50%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, 240px);
   gap: 20px;
 }
 
 .container > div {
-  background-color: green;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+  padding: 10px;
+  color: #000000;
+  position: relative;
+  height: 240px;
+}
+
+.remove {
+  background-color: #e74c3c;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 10px;
+}
+
+.read,
+.not_read,
+.remove {
+  border: none;
+  padding: 10px 25px;
+  color: #ffffff;
+}
+
+.read,
+.not_read {
+  background-color: #3498db;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 10px;
+}
+
+.read:hover,
+.not_read:hover {
+  background-color: #5aa6e6;
+}
+
+.container > div > :first-child::before {
+  content: "Title: ";
 }
