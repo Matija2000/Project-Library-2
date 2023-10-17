@@ -21,6 +21,14 @@ function addBookToLibrary(object) {
   myLibrary.push(object);
 }
 
+const myBook = new Book(
+  "Harry Potter and the Order of the Phoenix",
+  "JK Rowling",
+  766,
+  true
+);
+addBookToLibrary(myBook);
+
 let startingPoint = 0;
 function loopThroughArray() {
   for (let i = startingPoint; i < myLibrary.length; i++) {
@@ -28,9 +36,12 @@ function loopThroughArray() {
     const title = document.createElement("div");
     const author = document.createElement("div");
     const pages = document.createElement("div");
+    const h2 = document.createElement("h2");
+    h2.textContent = myLibrary[i].title;
     title.textContent = myLibrary[i].title;
     author.textContent = myLibrary[i].author;
     pages.textContent = myLibrary[i].pages;
+    div.appendChild(h2);
     div.appendChild(title);
     div.appendChild(author);
     div.appendChild(pages);
@@ -66,6 +77,8 @@ function loopThroughArray() {
     startingPoint += 1;
   }
 }
+
+loopThroughArray();
 
 submit.addEventListener("click", () => {
   const title = document.querySelector("#title").value;

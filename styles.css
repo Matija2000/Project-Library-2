@@ -1,23 +1,32 @@
+body {
+  background-color: #ebf4f9;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
 .container {
+  justify-content: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 240px);
+  grid-template-columns: repeat(auto-fit, 280px);
   gap: 20px;
+  width: 100%;
 }
 
 .container > div {
   box-sizing: border-box;
   background-color: #f0f0f0;
-  padding: 10px;
+  padding: 20px;
   color: #000000;
   position: relative;
-  height: 240px;
+  height: 340px;
+  border: 1px solid #dcdcdc;
 }
 
 .remove {
   background-color: #e74c3c;
   position: absolute;
-  right: 0;
   bottom: 0;
+  right: 0;
   margin: 10px;
 }
 
@@ -33,8 +42,8 @@
 .not_read {
   background-color: #3498db;
   position: absolute;
-  left: 0;
   bottom: 0;
+  left: 0;
   margin: 10px;
 }
 
@@ -43,6 +52,58 @@
   background-color: #5aa6e6;
 }
 
-.container > div > :first-child::before {
+.container > div > :nth-child(2)::before {
   content: "Title: ";
+  font-weight: bold;
+}
+
+.container > div > :nth-child(3)::before {
+  content: "Author: ";
+  font-weight: bold;
+}
+
+.container > div > div:last-of-type::before {
+  content: "Pages: ";
+  font-weight: bold;
+}
+
+.container > div > div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  margin-top: 10px;
+  padding: 2px 6px;
+  text-align: right;
+}
+
+.new_book {
+  border: none;
+  font-style: italic;
+  background-color: #ebf4f9;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.new_book::before {
+  content: "+ ";
+}
+
+.new_book:hover {
+  text-decoration-line: underline;
+}
+
+h2 {
+  height: 56px;
+}
+
+form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form > div {
+  display: flex;
+  justify-content: space-between;
 }
