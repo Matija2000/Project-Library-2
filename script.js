@@ -1,4 +1,11 @@
 const container = document.querySelector(".container");
+const newBook = document.querySelector(".new_book");
+const dialog = document.querySelector("dialog");
+const submit = document.querySelector(".submit");
+
+newBook.addEventListener("click", () => {
+  dialog.showModal();
+});
 
 const myLibrary = [];
 
@@ -13,13 +20,9 @@ function addBookToLibrary(object) {
   myLibrary.push(object);
 }
 
-let Book1 = new Book("Harry Potter", "J.K.Rowling", 220);
-let Book2 = new Book("Bitcoin", "Unknown", 160);
-addBookToLibrary(Book1);
-addBookToLibrary(Book2);
-
+let startingPoint = 0;
 function loopThroughArray() {
-  for (let i = 0; i < myLibrary.length; i++) {
+  for (let i = startingPoint; i < myLibrary.length; i++) {
     const div = document.createElement("div");
     const title = document.createElement("div");
     const author = document.createElement("div");
@@ -31,7 +34,15 @@ function loopThroughArray() {
     div.appendChild(author);
     div.appendChild(pages);
     container.appendChild(div);
+    startingPoint += 1;
   }
 }
 
-loopThroughArray();
+submit.addEventListener("click", () => {
+  const title = document.querySelector("#title").value;
+  const author = document.querySelector("#author").value;
+  const pages = document.querySelector("#pages").value;
+  const userBook = new Book(title, author, pages);
+  addBookToLibrary(userBook);
+  loopThroughArray();
+});
