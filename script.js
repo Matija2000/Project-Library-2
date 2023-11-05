@@ -10,11 +10,21 @@ newBook.addEventListener("click", () => {
 
 const myLibrary = [];
 
-function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+  }
+
+  toggleReadStatus() {
+    if (this.isRead === true) {
+      this.isRead = false;
+    } else {
+      this.isRead = true;
+    }
+  }
 }
 
 function addBookToLibrary(object) {
@@ -90,11 +100,3 @@ submit.addEventListener("click", () => {
   loopThroughArray();
   form.reset();
 });
-
-Book.prototype.toggleReadStatus = function () {
-  if (this.isRead === true) {
-    this.isRead = false;
-  } else {
-    this.isRead = true;
-  }
-};
